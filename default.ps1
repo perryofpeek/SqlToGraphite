@@ -2,7 +2,7 @@ properties {
   $Build_Artifacts = 'output'
   $Pkgs = 'pkgs'
   $fullPath= 'src\SqlToGraphite.host\output'
-  $version = '1.0.0.0'
+  $version = '1.0.0.3'
   $Debug = 'Debug'
   $pwd = pwd
   $TestReport = "";
@@ -11,16 +11,16 @@ properties {
 task default -depends Init , Clean, GetPublicPackages, GetPrivatePackages, CopyToOutput, Package
 
 task GetPublicPackages {
-    Exec { packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe install SqlToGraphiteInterfaces -OutputDirectory "$Pkgs" -version 0.3.2 }
-    Exec { packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe install SqlToGraphite -OutputDirectory "$Pkgs" -version 0.3.0.12 }
-    Exec { packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe install SqlToGraphitePlugin-Oracle -OutputDirectory "$Pkgs" -version 0.1.0 }
-    Exec { packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe install SqlToGraphitePlugin-SqlServer -OutputDirectory "$Pkgs" -version 0.1.0 }
-    #Exec { packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe install SqlToGraphitePlugin-LogParser -OutputDirectory pkgs -version 0.1.0 }
-	#Exec { packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe install SqlToGraphitePlugin-CCTray -OutputDirectory pkgs -version 0.1.0 }
+    Exec { .\NuGet.exe install SqlToGraphiteInterfaces -OutputDirectory "$Pkgs" -version 0.3.2 }
+    Exec { .\NuGet.exe install SqlToGraphite -OutputDirectory "$Pkgs" -version 0.3.0.12 }
+    Exec { .\NuGet.exe install SqlToGraphitePlugin-Oracle -OutputDirectory "$Pkgs" -version 0.1.0 }
+    Exec { .\NuGet.exe install SqlToGraphitePlugin-SqlServer -OutputDirectory "$Pkgs" -version 0.1.0 }
+    #Exec { .\NuGet.exe install SqlToGraphitePlugin-LogParser -OutputDirectory pkgs -version 0.1.0 }
+	#Exec { .\NuGet.exe install SqlToGraphitePlugin-CCTray -OutputDirectory pkgs -version 0.1.0 }
 }
 
 task GetPrivatePackages {
- #Exec { packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe install SqlToGraphitePlugin-TracsTransactionCount -OutputDirectory "$Pkgs" -version 0.1.0 }
+ #Exec { .\NuGet.exe install SqlToGraphitePlugin-TracsTransactionCount -OutputDirectory "$Pkgs" -version 0.1.0 }
 }
 
 task Clean {
@@ -40,7 +40,7 @@ task Init {
 	$Description = "Graphite Service for collecting metrics";
 	$Product = "SqlToGraphite $version";
 	$Title = "SqlToGraphite $version";
-	$Copyright = "PerryOfPeek 2012";	
+	$Copyright = "PerryOfPeek 2013";	
 }
 
 task CopyToOutput {

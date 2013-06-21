@@ -16,6 +16,7 @@
 [o]utput/ 
 BuildOutput
 pkgs
+packages
 
 SqlToGraphite-Setup*.*
 
@@ -39,3 +40,4 @@ output
 SqlToGraphite-Setup.exe
 unittest.error.txt
 unittest.output.txt
+nuget.exe
